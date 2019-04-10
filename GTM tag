@@ -1,0 +1,38 @@
+<script>
+
+  var msgtext= "<h3>Уважаемые клиенты!</h3> <p>Мы переезжаем! С 7 марта работаем по новому адресу: Большая Монетная, д. 16. Будем рады видеть вас!<p>"
+
+    var message= "<div class='card card-default mx-auto' style='padding: 1rem;max-width: 600px;text-align: center;margin-top: 10px;/* position: absolute; */border-color: #e2e2e2;box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);' id='f1msg'><div class='row'><div class='col-12 text-center'>"+msgtext+"<a onclick='closemsg()' href='#' class='btn btn-primary btn-sm btn-outline-info'>Закрыть x</a></div></div></div>"; 
+  
+  if (getCookie('f1msg')==null) {
+    document.getElementsByClassName("carousel-inner")[0].insertAdjacentHTML("afterend", message);
+  };
+
+  function closemsg() {
+    setCookie('f1msg', '1', 30);
+    var msg = document.getElementById('f1msg');
+    msg.style.display = 'none'; 
+  };
+  
+  function setCookie(name,value,days) {
+      var expires = "";
+      if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + (days*24*60*60*1000));
+          expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+  };
+   
+  function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  };
+
+</script>
