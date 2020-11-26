@@ -1,16 +1,52 @@
+<style>
+.msg {
+    background: #ef4d8f;
+    text-align: center;
+    border-color: #e2e2e2;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+}
+.banner-link {
+  display: block;
+    height: 5rem;
+    padding: 0.8rem;
+    position: relative;
+    font-size: 20px;
+    color: white;
+    background-color: #ef4d8f;
+  }
+.btn {
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    font-size: 16px;
+    line-height: 40px;
+    text-decoration: none;
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    vertical-align: middle;
+    background: #194aad;
+}
+</style>
+
 <script>
 
-  var msgtext= "<h3>Уважаемые клиенты!</h3> <p>Мы переезжаем! С 7 марта работаем по новому адресу: Большая Монетная, д. 16. Будем рады видеть вас!<p>"
+var id = 'bf26112020';
+var selector = 'header';
+var msgtext= "<a class='banner-link' href='/promos/824-chernaya-pyatnitsa'>Суперскидки на Черную Пятницу!</a>";
 
-    var message= "<div class='card card-default mx-auto' style='padding: 1rem;max-width: 600px;text-align: center;margin-top: 10px;/* position: absolute; */border-color: #e2e2e2;box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);' id='f1msg'><div class='row'><div class='col-12 text-center'>"+msgtext+"<a onclick='closemsg()' href='#' class='btn btn-primary btn-sm btn-outline-info'>Закрыть x</a></div></div></div>"; 
+var message= "<div class='msg' id='"+id+"'><div class='row'><div class='col'>"+msgtext+"</div></div><a onclick='closemsgtopbanner()' href='#' class='btn'>Закрыть x</a></div>"; 
   
-  if (getCookie('f1msg')==null) {
-    document.getElementsByClassName("carousel-inner")[0].insertAdjacentHTML("afterend", message);
+  if (getCookie(id)==null) {
+    //document.getElementsByClassName(selector)[0].insertAdjacentHTML("beforebegin", message);
+    document.getElementsByClassName(selector)[0].insertAdjacentHTML("afterend", message);
   };
 
-  function closemsg() {
-    setCookie('f1msg', '1', 30);
-    var msg = document.getElementById('f1msg');
+  function closemsgtopbanner() {
+    setCookie(id, '1', 30);
+    var msg = document.getElementById(id);
     msg.style.display = 'none'; 
   };
   
